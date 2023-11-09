@@ -1,4 +1,6 @@
-﻿namespace SportsPro.Models
+﻿using System.Linq;
+
+namespace SportsPro.Models
 {
     public class Check
     {

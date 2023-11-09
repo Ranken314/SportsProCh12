@@ -47,9 +47,11 @@ namespace SportsPro.Models
         [DataType(DataType.EmailAddress)]
         [Remote("CheckEmail", "Validation", AdditionalFields ="CustomerID")]
         public string Email {  get; set; } = string.Empty; 
+
+        // Navigation property to linking entity
         public ICollection<Registration>? Registrations { get; set; }
 
-        public string FullName => FirstName + "" + LastName;
+        public string FullName => FirstName + "" + LastName;  // read-only property
 
     }
 }
