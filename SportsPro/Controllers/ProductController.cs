@@ -82,9 +82,9 @@ namespace SportsPro.Controllers
         {
             string message;
 
-            Context.Products.Remove(product);
             message = product.ProductName + " was deleted.";
             TempData["message"] = message;
+            Context.Products.Remove(product);
             Context.SaveChanges();
             return RedirectToAction("List");
         }

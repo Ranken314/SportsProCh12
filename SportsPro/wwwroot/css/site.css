@@ -21,15 +21,16 @@ body {
   margin-bottom: 60px;
 }
 
-.footer{
+footer{
     position: absolute;
     bottom: 0;
     width: 100%;
     white-space: nowrap;
     line-height: 40px;
+    background-color: aqua;
 }
 
-.input-validation-error{
+input-validation-error{
     border: 2px solid #dc3545;
     background-color: #faebd7;
 }

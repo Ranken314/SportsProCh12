@@ -9,6 +9,7 @@ namespace SportsPro.Models
         public string? CountryID { get; set; }
 
         [Required]
+        [ValidateNever]
         public string CountryName { get; set; } = string.Empty;
     }
 }

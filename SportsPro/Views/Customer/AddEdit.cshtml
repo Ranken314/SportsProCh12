@@ -1,9 +1,11 @@
 ﻿@model Customer
 
 @{
-    string title = ViewBag.Action + " Customer";
+    string title = ViewBag.Action + "Customer";
     ViewBag.Title = title;
 }
+
+
 
 <h1>@ViewBag.Title</h1>
 
@@ -46,12 +48,11 @@
     <div class="row-form-group">
         <label asp-for="CountryID" class="col-sm-3">Cuontry</label>
         <div class="col">
-            <select asp-for="CountryID" class="form-control">
+            <select asp-for="CountryID"
+                    asp-items="@(new SelectList(ViewBag.Countries,
+                    "CountryID", "CountryName"))"
+                    class="form-select">
                 <option value="">Select a Country</option>
-                @foreach(Country c in ViewBag.Countries)
-                {
-                    <option value="@c.CountryID">@c.CountryName</option>
-                }
             </select>
         </div>
         <div class="row form-group">
