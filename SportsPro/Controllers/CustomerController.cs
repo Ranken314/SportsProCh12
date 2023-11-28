@@ -45,15 +45,20 @@ namespace SportsPro.Controllers
         [HttpPost]
         public IActionResult Save(Customer customer)
         {
-            if(customer.CustomerID == 0)
+            if (customer.CountryID == "XX")
             {
-                ViewBag.Action = "Add";
-            }
-            else
-            {
-                ViewBag.Action = "Edit";
+                ModelState.AddModelError(nameof(customer.CountryID), "Required.");
             }
 
+            if (customer.CustomerID == 0 && TempData["okEmail"] == null)
+            {
+                string msg = Check.EmailExists(Context, customer.Email);
+
+                if (!string.IsNullOrEmpty(msg))
+                {
+                    ModelState.AddModelError(nameof(Customer.Email), msg);
+                }
+            }
             if (ModelState.IsValid)
             {
                 if (ViewBag.Action == "Add")
@@ -70,7 +75,14 @@ namespace SportsPro.Controllers
             }
             else
             {
-                ViewBag.Countries = Context.Countries.ToList();
+                if (customer.CustomerID == 0)
+                {
+                    ViewBag.Action = "Add";
+                }
+                else
+                {
+                    ViewBag.Action = "Edit";
+                }
                 return View("AddEdit", customer);
             }
         }
